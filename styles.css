@@ -1,0 +1,142 @@
+body,
+head {
+  background-color: black;
+  display: block;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  color: rgb(255, 16, 16);
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+h2 {
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  color: rgb(255, 16, 16);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.button {
+  border: none;
+  color: rgb(226, 165, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: "Cascadia Code", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.button1 {
+  background-color: #000000;
+}
+
+.button1:hover {
+  color: #ffffff;
+  transition: color 150ms ease-in-out;
+}
+
+.koumpinai {
+  border: none;
+  color: rgb(0, 0, 0);
+  background-color: #000000;
+  /* black box */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: "Cascadia Code", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.koumpinai:hover {
+  color: #ffffff;
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out;
+}
+
+.timerapairnoumepoulo {
+  border: none;
+  color: rgb(239, 239, 239);
+  background-color: #000000;
+  /* black box */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: "Cascadia Code", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.nyxta {
+  border: none;
+  color: rgb(239, 239, 239);
+  background-color: #000000;
+  padding: 12px 22px;
+  text-align: center;
+  display: block;
+  font-size: 18px;
+  margin: 8px 0;
+  font-family: "Cascadia Code", sans-serif;
+  font-weight: 300;
+}
+
+/* Utility: hide an element via class (preferred over inline styles) */
+.hidden {
+  display: none !important;
+}
+
+/* Visual for disabled state applied by JS when outside allowed hours */
+.koumpinai.disabled-outside-hours {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  /* prevents clicks while visually disabled */
+}
+
+.koumpimpes {
+  border: none;
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+  /* black box */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: "Cascadia Code", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
