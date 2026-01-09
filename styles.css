@@ -13,6 +13,41 @@ head {
   align-items: center;
 }
 
+/* Hero: image with centered overlay title */
+.hero {
+  position: relative;
+  display: block;
+  /* full-width container so overlay doesn't shrink-wrap */
+  width: 100%;
+}
+
+.hero__img {
+  display: block;
+  max-width: 90vw;
+  height: auto;
+  margin: 0 auto;
+  /* center the image within the full-width hero */
+}
+
+.hero__title {
+  position: absolute;
+  inset: 0;
+  /* top:0; right:0; bottom:0; left:0 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  /* let pointer events pass through to image */
+  color: #ff1010;
+  /* keep existing red tone */
+  font-size: 65px;
+  padding: 0 1rem;
+  /* no text shadow as requested */
+  backdrop-filter: none;
+  margin-left: 80px;
+}
+
 h1 {
   font-family: "Cascadia Code", sans-serif;
   font-optical-sizing: auto;
@@ -21,7 +56,7 @@ h1 {
   color: rgb(255, 16, 16);
   margin-top: 50px;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 23px;
 }
 
 h2 {
@@ -32,7 +67,7 @@ h2 {
   color: rgb(255, 16, 16);
   margin-top: 20px;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .button {
@@ -58,6 +93,8 @@ h2 {
   color: #ffffff;
   transition: color 150ms ease-in-out;
 }
+
+
 
 .koumpinai {
   border: none;
@@ -139,4 +176,30 @@ h2 {
   font-family: "Cascadia Code", sans-serif;
   font-weight: 200;
   font-style: normal;
+}
+
+.mainselida {
+  background-color: black;
+  display: block;
+}
+
+.main-container-kyrias-selidas {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+  color: rgb(255, 251, 141);
+  font-family: "Cascadia Code", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.6;
+   white-space: pre-wrap;
+}
+
+.accent {
+  color: #000000;
+}
+::selection {
+  color: rgb(0, 0, 0);
+  background: rgb(255, 251, 141);
 }
