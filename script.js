@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }, 30 * 1000);
 
-  // On click: show the correct element depending on local time
-  koum.addEventListener('click', function () {
-    
+  // Extract the shared behavior into a function so it can be triggered
+  // by clicks and by touch/pointer events on small screens.
+  function revealTargetsFromKoum() {
     if (isNightWindow()) {
       // show night button, hide timer
       if (koumpimpes) {
@@ -115,5 +115,37 @@ document.addEventListener('DOMContentLoaded', function () {
       koum.setAttribute('aria-hidden', 'true');
       return;
     }
+  }
+
+  // Wire up the regular click handler to the shared function
+  koum.addEventListener('click', function () {
+    revealTargetsFromKoum();
   });
+
+  // On touch devices / small viewports, tapping anywhere (or tapping the GIF)
+  // should reveal the correct button. We'll listen for the first touch on the
+  // document (excluding taps directly on existing buttons) and for pointerdown
+  // on the GIF. Both call the same reveal function. Use once:true so we don't
+  // interfere with normal interactions after the first reveal.
+  const isSmallScreen = () => window.matchMedia('(max-width: 700px)').matches || navigator.maxTouchPoints > 0;
+
+  function onFirstTouch(e) {
+    // If the user tapped an existing button, let that interaction proceed.
+    if (e && e.target && e.target.closest && e.target.closest('button')) return;
+    if (!isSmallScreen()) return;
+    // Reveal the correct targets as if the user pressed the 'ναι' button.
+    revealTargetsFromKoum();
+  }
+
+  // Document-level first touch (passive, once)
+  document.addEventListener('touchstart', onFirstTouch, { once: true, passive: true });
+
+  // Also treat pointerdown on the GIF explicitly (covers some browsers/devices)
+  if (gif) {
+    gif.addEventListener('pointerdown', function (e) {
+      // don't block dragging; only reveal on pointerdown for small screens
+      if (!isSmallScreen()) return;
+      onFirstTouch(e);
+    }, { once: true });
+  }
 });

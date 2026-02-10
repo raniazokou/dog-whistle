@@ -32,42 +32,39 @@ head {
 .hero__title {
   position: absolute;
   inset: 0;
-  /* top:0; right:0; bottom:0; left:0 */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   pointer-events: none;
-  /* let pointer events pass through to image */
   color: #ff1010;
-  /* keep existing red tone */
-  font-size: 65px;
+  font-size: clamp(2rem, 6vw, 6rem);
   padding: 0 1rem;
-  /* no text shadow as requested */
   backdrop-filter: none;
-  margin-left: 80px;
+  margin-left: 40px;
+  font-weight: 300;
 }
 
 h1 {
-  font-family: "Cascadia Code", sans-serif;
+
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
   color: rgb(255, 16, 16);
   margin-top: 50px;
   margin-bottom: 20px;
-  font-size: 23px;
+  font-size: clamp(2rem, 6vw, 6rem);
 }
 
 h2 {
-  font-family: "Cascadia Code", sans-serif;
+
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
   color: rgb(255, 16, 16);
   margin-top: 20px;
   margin-bottom: 20px;
-  font-size: 40px;
+  font-size: clamp(1.5rem, 4vw, 40px);
 }
 
 .button {
@@ -80,7 +77,6 @@ h2 {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  font-family: "Cascadia Code", sans-serif;
   font-weight: 300;
   font-style: italic;
 }
@@ -108,7 +104,6 @@ h2 {
   font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;
-  font-family: "Cascadia Code", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
@@ -130,7 +125,6 @@ h2 {
   font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;
-  font-family: "Cascadia Code", sans-serif;
   font-weight: 200;
   font-style: normal;
 }
@@ -144,7 +138,6 @@ h2 {
   display: block;
   font-size: 18px;
   margin: 8px 0;
-  font-family: "Cascadia Code", sans-serif;
   font-weight: 300;
 }
 
@@ -165,7 +158,7 @@ h2 {
   border: none;
   color: rgb(255, 255, 255);
   background-color: #000000;
-  /* black box */
+
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -173,7 +166,6 @@ h2 {
   font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;
-  font-family: "Cascadia Code", sans-serif;
   font-weight: 200;
   font-style: normal;
 }
@@ -188,18 +180,154 @@ h2 {
   margin-bottom: 50px;
   margin-left: 400px;
   margin-right: 400px;
-  color: rgb(255, 251, 141);
-  font-family: "Cascadia Code", sans-serif;
-  font-size: 20px;
+  color: rgb(254, 252, 166);
+  font-size: 24px;
   font-weight: 300;
   line-height: 1.6;
-   white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 .accent {
   color: #000000;
 }
+
+/* Force site-wide font to Times New Roman per user request */
+*,
+*::before,
+*::after {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
 ::selection {
   color: rgb(0, 0, 0);
   background: rgb(255, 251, 141);
+}
+
+.main-container-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  color: rgb(254, 252, 166);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.6;
+  white-space: normal;
+}
+
+
+.main-container-about a:link {
+  color: rgb(226, 165, 255);
+}
+
+.main-container-about a:visited {
+  color: rgb(0, 217, 255);
+}
+
+.main-container-about a:hover {
+  color: hotpink;
+}
+
+
+@media (max-width: 900px) {
+  .main-container-about {
+    grid-template-columns: 1fr;
+    /* stack columns on narrower desktops/tablets */
+    gap: 1.25rem;
+    margin-left: 60px;
+    margin-right: 60px;
+    font-size: 22px;
+  }
+
+  .hero__title {
+    margin-left: 20px;
+    font-size: clamp(2.2rem, 6.5vw, 6rem);
+  }
+
+  .main-container {
+    height: auto;
+    /* allow content to grow on narrower viewports */
+  }
+}
+
+@media (max-width: 700px) {
+  .main-container-about {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-left: 24px;
+    margin-right: 24px;
+    font-size: 18px;
+  }
+
+  .hero__title {
+    margin-left: 0;
+    font-size: clamp(1.8rem, 8vw, 4.2rem);
+  }
+
+  .main-container {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Ensure the primary 'ναι' button is visible on touch / small screens
+     even if JS or the .hidden utility was applied. The media-query rule
+     uses !important and comes after the .hidden declaration so it will
+     override display:none for small viewports. */
+  .koumpinai {
+    display: inline-block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .button,
+  .koumpinai,
+  .koumpimpes {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .main-container-about {
+    font-size: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  /* same override for very small screens */
+  .koumpinai {
+    display: inline-block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .main-container-kyrias-selidas {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    padding-left: 6px;
+    padding-right: 6px;
+    box-sizing: border-box;
+    white-space: pre-line;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container-kyrias-selidas {
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 16px;
+    padding-left: 6px;
+    padding-right: 6px;
+    white-space: pre-line;
+  }
 }
