@@ -28,18 +28,21 @@ document.addEventListener('DOMContentLoaded', function () {
   function isDayWindow(date) {
     const d = date || new Date();
     const minutes = d.getHours() * 60 + d.getMinutes();
-    const start = 5 * 60 + 59; // 05:59 -> 359
-    const end = 21 * 60 + 59;  // 21:59 -> 1319
+    // After the requested change, the "day" (closed) window runs from
+    // 07:01 up to 18:29 (so the site 'open' window is 18:30–07:00).
+    const start = 7 * 60 + 1; // 07:01 -> 421
+    const end = 18 * 60 + 29; // 18:29 -> 1109
     return minutes >= start && minutes <= end;
   }
 
-  // Night window: 22:00 - 05:58 (inclusive)
+  // Night / "open" window: 18:30 - 07:00 (wraps midnight)
   function isNightWindow(date) {
     const d = date || new Date();
     const minutes = d.getHours() * 60 + d.getMinutes();
-    const start = 22 * 60; // 22:00 -> 1320
-    const end = 5 * 60 + 58; // 05:58 -> 358
-    return minutes >= start || minutes <= end; // wraps midnight
+    const start = 18 * 60 + 30; // 18:30 -> 1110
+    const end = 7 * 60; // 07:00 -> 420
+    // wraps midnight: true when minutes >= start OR minutes <= end
+    return minutes >= start || minutes <= end;
   }
 
   // Ensure both targets exist and are hidden initially

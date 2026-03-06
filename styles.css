@@ -269,7 +269,7 @@ h2 {
 
   .main-container {
     height: auto;
-    padding: 2rem 1rem;
+    padding-top: 1rem;
   }
 
   /* Ensure the primary 'ναι' button is visible on touch / small screens
